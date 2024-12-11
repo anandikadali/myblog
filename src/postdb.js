@@ -1,16 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+const mongoose = require("mongoose");
+async function main() {
+  // mongoose.connect("mongod://localhost:27017/todolistDb", {
+  //   useNewUrlParser: true,
+  // });
+  await mongoose.connect(
+    "mongodb+srv://anandikadali5563:KksLLZ68paI0Y36q@cluster0.fk8ns.mongodb.net/",
+    { useNewUrlParser: true }
+  );
+  // mongoose.connect("mongodb://127.0.0.1:27017/myblog") for local DB
+  console.log("post connected");
+}
+main()
+const postSchema = new mongoose.Schema({
+    author: String,
+    title: String,
+    content: String,
+    thumbnail:String,
+    date:Number,
+    like:Number,
+    likedby:[String]
+    });
+  
+    
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+const PosT = mongoose.model("post", postSchema);
+module.exports = PosT
 

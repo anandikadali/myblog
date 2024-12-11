@@ -1,12 +1,14 @@
 const mongoose = require("mongoose");
 async function main() {
-  
+  // mongoose.connect("mongod://localhost:27017/todolistDb", {
+  //   useNewUrlParser: true,
+  // });
   await mongoose.connect(
     "mongodb+srv://anandikadali5563:KksLLZ68paI0Y36q@cluster0.fk8ns.mongodb.net/",
     { useNewUrlParser: true }
     
   );
- 
+  // mongoose.connect("mongodb://127.0.0.1:27017/myblog") for local Db
   console.log("profile connected");
 }
 main();
